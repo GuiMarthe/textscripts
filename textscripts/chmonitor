@@ -1,0 +1,10 @@
+function monitor() {
+    [ "$1" = "big-only" ] && xrandr --output HDMI-1 --auto --output eDP-1 --off
+    [ "$1" = "both" ] && xrandr --output HDMI-1 --auto --output eDP-1 --auto --left-of HDMI-1
+    [ "$1" = "laptop-only" ] && xrandr --output HDMI-1 --off
+}
+
+choice=$(echo -e 'big-only\nboth\nlaptop-only' | dmenu)
+
+monitor $choice
+
