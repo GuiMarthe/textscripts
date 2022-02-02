@@ -1,0 +1,17 @@
+#!/bin/bash
+
+
+choice=$(echo -e 'pt -> es\nen -> es\nes -> pt\nes -> en' | dmenu)
+
+text_to_translate=$(echo '> what to translate?' | dmenu)
+
+[ "$choice" = 'pt -> es' ] &&  res=$(trans -no-warn --brief pt:es "$text_to_translate")
+[ "$choice" = 'en -> es' ] &&  res=$(trans -no-warn --brief en:es "$text_to_translate")
+[ "$choice" = 'es -> pt' ] &&  res=$(trans -no-warn --brief es:pt "$text_to_translate")
+[ "$choice" = 'es -> en' ] &&  res=$(trans -no-warn --brief es:en "$text_to_translate")
+
+notify-send "traducão" "$res"
+
+echo "$res" | xclip -selection clipboard
+
+
