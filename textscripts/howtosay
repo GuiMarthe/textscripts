@@ -9,6 +9,7 @@ text_to_translate=$(echo '> what to translate?' | dmenu)
 [ "$choice" = 'en -> es' ] &&  res=$(trans -no-warn --brief en:es "$text_to_translate")
 [ "$choice" = 'es -> pt' ] &&  res=$(trans -no-warn --brief es:pt "$text_to_translate")
 [ "$choice" = 'es -> en' ] &&  res=$(trans -no-warn --brief es:en "$text_to_translate")
+[ "$choice" = 'pt -> en' ] &&  res=$(trans -no-warn --brief pt:en "$text_to_translate")
 
 notify-send "traducão" "$res"
 
